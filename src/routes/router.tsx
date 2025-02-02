@@ -7,7 +7,7 @@ import {RecipesPage} from "../pages/RecipesPage.tsx";
 import {RecipeDetailPage} from "../pages/RecipeDetailPage.tsx";
 import {HomePage} from "../pages/HomePage.tsx";
 
-export const routes = createBrowserRouter([
+export const router = createBrowserRouter([
     {
         path: '/', element: <App/>, children: [
             {index: true, element: <HomePage/>},
