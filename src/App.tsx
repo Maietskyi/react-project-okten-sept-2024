@@ -1,6 +1,6 @@
 import './App.css'
 import {Outlet} from "react-router";
-import {Menu} from "./components/menu/Menu.tsx";
+import {Menu} from "./components/menu-component/Menu.tsx";
 
 function App() {
 
