@@ -28,7 +28,7 @@ export const SearchComponent: FC<SearchBarProps> = ({searchType, onSearch, searc
                     if (e.key === "Enter") handleSearch()
                 }}
             />
-            <button onClick={handleSearch}>🔎</button>
+            <button onClick={handleSearch}>🔎︎</button>
         </div>
     );
 };

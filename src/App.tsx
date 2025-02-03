@@ -4,10 +4,10 @@ import {Outlet} from "react-router";
 
 function App() {
     return (
-        <>
+        <div className="app-component">
             <Menu/>
             <Outlet/>
-        </>
+        </div>
     )
 }
 
