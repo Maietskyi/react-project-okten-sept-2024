@@ -29,7 +29,7 @@ export const HomeComponent = () => {
             ) : (
                 <div className="welcome-message">
                     {image && <img src={image} alt="User Logo" className="user-logo"/>}
-                    <p>Welcome back, dear {firstName ? firstName : " user"}! Enjoy browsing our content.</p>
+                    <p>Welcome back, dear {firstName ? firstName : " user"}!</p>
                 </div>
             )}
         </div>

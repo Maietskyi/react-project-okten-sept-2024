@@ -3,9 +3,9 @@ import {useNavigate, useSearchParams} from "react-router";
 import {useEffect} from "react";
 import {AppDispatch, RootState} from "../../redux/store.ts";
 import {fetchUsers, setPage} from "../../redux/slices/userSlice.ts";
-import {SearchBar} from "../search-component/SearchBar.tsx";
+import {SearchComponent} from "../search-component/SearchComponent.tsx";
 import {UserCard} from "../user-component/UserCard.tsx";
-import {Pagination} from "../pagination-component/Pagination.tsx";
+import {PaginationComponent} from "../pagination-component/PaginationComponent.tsx";
 
 
 
@@ -54,7 +54,7 @@ export const UsersComponent = () => {
     return (
         <div>
             <h1>User list</h1>
-            <SearchBar searchType="users" onSearch={handleSendUser} search={query}/>
+            <SearchComponent searchType="users" onSearch={handleSendUser} search={query}/>
             <ul>
                 {loading ? (
                     <p>Loading...</p>
@@ -68,7 +68,7 @@ export const UsersComponent = () => {
                     <p>No users</p>
                 )}
             </ul>
-            <Pagination
+            <PaginationComponent
                 totalPages={totalPages}
                 currentPage={currentPage}
                 onPageChange={handlePageChange}

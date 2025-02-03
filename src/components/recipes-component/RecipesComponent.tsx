@@ -1,12 +1,11 @@
 import {useEffect} from "react";
 import {useDispatch, useSelector} from "react-redux";
-
 import {useNavigate, useSearchParams} from "react-router";
 import {AppDispatch, RootState} from "../../redux/store.ts";
 import {fetchRecipes, fetchRecipesByTag, setPageRecipe} from "../../redux/slices/recipeSlice.ts";
-import {SearchBar} from "../search-component/SearchBar.tsx";
+import {SearchComponent} from "../search-component/SearchComponent.tsx";
 import {RecipeList} from "../recipe-component/RecipeList.tsx";
-import {Pagination} from "../pagination-component/Pagination.tsx";
+import {PaginationComponent} from "../pagination-component/PaginationComponent.tsx";
 
 
 export const RecipesComponent = () => {
@@ -53,7 +52,7 @@ export const RecipesComponent = () => {
     return (
         <div>
             <h1>Recipe list</h1>
-            <SearchBar searchType="recipes" onSearch={hendleSendRecipe} search={query}/>
+            <SearchComponent searchType="recipes" onSearch={hendleSendRecipe} search={query}/>
             <ul className="recipe-list">
                 {recipes.length > 0 ? (
                     recipes.map((recipe) => (
@@ -65,7 +64,7 @@ export const RecipesComponent = () => {
                     <p>No recipes</p>
                 )}
             </ul>
-            <Pagination
+            <PaginationComponent
                 totalPages={totalPages}
                 currentPage={currentPage}
                 onPageChange={handlePageChange}

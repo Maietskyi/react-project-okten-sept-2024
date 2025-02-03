@@ -1,5 +1,5 @@
 import {FC, useEffect, useState} from "react";
-import './SearchBar.css'
+import './SearchComponent.css'
 
 interface SearchBarProps {
     searchType: "recipes" | "users";
@@ -9,7 +9,7 @@ interface SearchBarProps {
     search: string
 }
 
-export const SearchBar: FC<SearchBarProps> = ({searchType, onSearch, search}) => {
+export const SearchComponent: FC<SearchBarProps> = ({searchType, onSearch, search}) => {
     const [query, setQuery] = useState("");
 
     const handleSearch = () => {

@@ -1,5 +1,5 @@
 import {FC} from "react";
-import "./Pagination.css";
+import "./PaginationComponent.css";
 
 interface PaginationProps {
     totalPages: number;
@@ -7,7 +7,7 @@ interface PaginationProps {
     onPageChange: (page: number) => void;
 }
 
-export const Pagination: FC<PaginationProps> = ({totalPages, currentPage, onPageChange}) => {
+export const PaginationComponent: FC<PaginationProps> = ({totalPages, currentPage, onPageChange}) => {
     if (totalPages <= 1) return null;
 
     return (
