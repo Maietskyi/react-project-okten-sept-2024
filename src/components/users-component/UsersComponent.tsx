@@ -6,6 +6,7 @@ import {fetchUsers, setPage} from "../../redux/slices/userSlice.ts";
 import {SearchComponent} from "../search-component/SearchComponent.tsx";
 import {UserList} from "../user-component/UserList.tsx";
 import {PaginationComponent} from "../pagination-component/PaginationComponent.tsx";
+import "./users-component.css"
 
 export const UsersComponent = () => {
     const dispatch = useDispatch<AppDispatch>();
@@ -50,9 +51,9 @@ export const UsersComponent = () => {
     };
 
     return (
-        <div>
+        <div className="users-list">
             <h1>User list</h1>
-            <SearchComponent searchType="users" onSearch={handleSendUser} search={query}/>
+            <div className="search-bar"><SearchComponent searchType="users" onSearch={handleSendUser} search={query}/></div>
             <ul>
                 {loading ? (
                     <p>Loading...</p>
