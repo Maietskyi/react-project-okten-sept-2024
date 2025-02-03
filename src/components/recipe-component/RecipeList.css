@@ -24,7 +24,7 @@ h1 {
 }
 
 .recipe-item:hover {
-    transform: translateY(-5px);
+    transform: translateY(-2px);
     box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
 }
 
@@ -39,14 +39,14 @@ h1 {
 }
 
 .recipe-title:hover {
-    color: #0073e6;
+    color: #7ba67b;
 }
 
 .recipe-tags {
     display: flex;
     flex-wrap: wrap;
     gap: 8px;
-    padding: 10px 15px;
+    padding: 10px 16px;
 }
 
 .tag {
@@ -60,6 +60,6 @@ h1 {
 }
 
 .tag:hover {
-    background-color: #0073e6;
+    background-color: #7ba67b;
     color: white;
 }
