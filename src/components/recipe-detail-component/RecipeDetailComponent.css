@@ -1,4 +1,9 @@
-
+.details-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
 
 .details-result-tags {
     text-decoration: none;
@@ -18,3 +23,11 @@
     align-items: center;
     border-bottom: 1px solid #456845;
 }
+
+.button-go-back{
+    background-color: #456845;
+
+    margin-top: 20px;
+}
+
+

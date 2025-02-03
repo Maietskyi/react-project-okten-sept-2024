@@ -24,7 +24,7 @@ export const HomeComponent = () => {
             <h1>Welcome to the world of cooking!</h1>
             {!isAuthenticated ? (
                 <div className="auth-message">
-                    <p><Link to="/login">login</Link> to view users and recipes.</p>
+                    <p><Link to="/login">Login</Link> to view users and recipes.</p>
                 </div>
             ) : (
                 <div className="welcome-message">
