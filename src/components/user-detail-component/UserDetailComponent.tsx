@@ -38,7 +38,6 @@ export const UserDetailComponent = () => {
             <p>Status: {selectedUser.age}</p>
             <p>Role: {selectedUser.role}</p>
             <p>User IP: {selectedUser.ip}</p>
-
             <h3>User recipes:</h3>
             {userRecipes.length > 0 ? (
                 <ul>

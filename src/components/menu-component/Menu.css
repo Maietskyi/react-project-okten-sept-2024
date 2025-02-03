@@ -12,6 +12,7 @@ nav .logo {
     color: #fff;
     font-weight: bold;
     margin-top: 0;
+    text-decoration: none;
 }
 
 nav .logo a {

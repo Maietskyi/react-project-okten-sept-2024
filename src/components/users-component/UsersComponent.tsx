@@ -7,8 +7,6 @@ import {SearchComponent} from "../search-component/SearchComponent.tsx";
 import {UserList} from "../user-component/UserList.tsx";
 import {PaginationComponent} from "../pagination-component/PaginationComponent.tsx";
 
-
-
 export const UsersComponent = () => {
     const dispatch = useDispatch<AppDispatch>();
     const navigate = useNavigate();
@@ -49,7 +47,7 @@ export const UsersComponent = () => {
         } else {
             navigate(`?page=1`);
         }
-    }
+    };
 
     return (
         <div>
@@ -68,11 +66,7 @@ export const UsersComponent = () => {
                     <p>No users</p>
                 )}
             </ul>
-            <PaginationComponent
-                totalPages={totalPages}
-                currentPage={currentPage}
-                onPageChange={handlePageChange}
-            />
+            <PaginationComponent totalPages={totalPages} currentPage={currentPage} onPageChange={handlePageChange}/>
         </div>
     );
 };

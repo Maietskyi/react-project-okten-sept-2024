@@ -3,9 +3,7 @@ import './SearchComponent.css'
 
 interface SearchBarProps {
     searchType: "recipes" | "users";
-
     onSearch(value: string): void;
-
     search: string
 }
 
@@ -27,9 +25,7 @@ export const SearchComponent: FC<SearchBarProps> = ({searchType, onSearch, searc
                 value={query}
                 onChange={(e) => setQuery(e.target.value)}
                 onKeyDown={(e) => {
-                    if (e.key === "Enter") {
-                        handleSearch();
-                    }
+                    if (e.key === "Enter") handleSearch()
                 }}
             />
             <button onClick={handleSearch}>🔎</button>

@@ -6,16 +6,16 @@ import {fetchRecipes, fetchRecipesByTag, setPageRecipe} from "../../redux/slices
 import {SearchComponent} from "../search-component/SearchComponent.tsx";
 import {RecipeList} from "../recipe-component/RecipeList.tsx";
 import {PaginationComponent} from "../pagination-component/PaginationComponent.tsx";
-
+import "./RecipesComponent.css"
 
 export const RecipesComponent = () => {
-    const dispatch = useDispatch<AppDispatch>();
     const navigate = useNavigate();
+    const dispatch = useDispatch<AppDispatch>();
     const {recipes, total, currentPage, status} = useSelector((state: RootState) => state.recipe);
 
     const [params] = useSearchParams();
-    const page = parseInt(params.get('page') ?? '1', 10);
     const query = params.get('q') ?? '';
+    const page = parseInt(params.get('page') ?? '1', 10);
     const tagFromUrl = params.get("tag");
 
     useEffect(() => {
@@ -41,22 +41,21 @@ export const RecipesComponent = () => {
         }
     };
 
-    const hendleSendRecipe = (query: string) => {
+    const handleSendRecipe = (query: string) => {
         if (query !== '') {
             navigate(`?page=1&q=${query}`);
         } else {
             navigate(`?page=1`);
         }
     };
-
     return (
         <div>
             <h1>Recipe list</h1>
-            <SearchComponent searchType="recipes" onSearch={hendleSendRecipe} search={query}/>
+            <SearchComponent searchType="recipes" onSearch={handleSendRecipe} search={query}/>
             <ul className="recipe-list">
                 {recipes.length > 0 ? (
                     recipes.map((recipe) => (
-                        <li key={recipe.id} className="recipe-item">
+                        <li key={recipe.id} className="recipe">
                             <RecipeList recipe={recipe}/>
                         </li>
                     ))
@@ -64,11 +63,7 @@ export const RecipesComponent = () => {
                     <p>No recipes</p>
                 )}
             </ul>
-            <PaginationComponent
-                totalPages={totalPages}
-                currentPage={currentPage}
-                onPageChange={handlePageChange}
-            />
+            <PaginationComponent totalPages={totalPages} currentPage={currentPage} onPageChange={handlePageChange}/>
         </div>
     );
 };

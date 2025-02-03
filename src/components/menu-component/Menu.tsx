@@ -17,30 +17,32 @@ export const Menu = () => {
 
     return (
         <nav>
-            <div className="logo">
-                {isAuthenticated ? (
-                    <>
-                        <li className="user-profile">
-                            {image && <img src={image} alt="User Logo" className="user-logo"/>}
-                            <span>{firstName ? firstName : "User"}</span>
-                        </li>
-                    </>
-                ):''}
-            </div>
-            <ul>
-                <li><Link to="/">Home</Link></li>
-                {isAuthenticated ? (
-                    <>
-                        <li><Link to="/users">Users</Link></li>
-                        <li><Link to="/recipes">Recipes</Link></li>
-                        <li>
-                            <button className="button-get-out" onClick={handleLogout}>Exit</button>
-                        </li>
-                    </>
-                ) : (
-                    <li><Link className="button-login" to="/login">Login</Link></li>
-                )}
-            </ul>
+            <Link to="/">
+                <div className="logo">
+                    {isAuthenticated ? (
+                        <>
+                            <li className="user-profile">
+                                {image && <img src={image} alt="User Logo" className="user-logo"/>}
+                                <span>{firstName ? firstName : "User"}</span>
+                            </li>
+                        </>
+                    ) : ''}
+                </div>
+            </Link>
+                <ul>
+                    <li><Link to="/">Home</Link></li>
+                    {isAuthenticated ? (
+                        <>
+                            <li><Link to="/users">Users</Link></li>
+                            <li><Link to="/recipes">Recipes</Link></li>
+                            <li>
+                                <button className="button-get-out" onClick={handleLogout}>Exit</button>
+                            </li>
+                        </>
+                    ) : (
+                        <li><Link className="button-login" to="/login">Login</Link></li>
+                    )}
+                </ul>
         </nav>
-    );
+);
 };

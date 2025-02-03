@@ -52,7 +52,6 @@ export const fetchUser = createAsyncThunk<IUser, void, { rejectValue: string }>(
         if (!accessToken) {
             return rejectWithValue("User is not authorized.");
         }
-
         try {
             return await fetchUserData(accessToken);
         } catch (error) {

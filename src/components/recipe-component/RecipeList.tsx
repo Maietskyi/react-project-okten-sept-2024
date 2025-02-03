@@ -14,7 +14,7 @@ export const RecipeList = ({ recipe }: RecipeListProps) => {
     };
 
     return (
-        <div className="recipe-item">
+        <div className="recipe">
             <Link to={`/recipes/${recipe.id}`} className="recipe-title">
                 {recipe.name}
             <div className="recipe-tags">

@@ -1,7 +1,7 @@
 import {FC} from "react";
 import {IUser} from "../../models/IUser.ts";
-import "./UserList.css";
 import {Link} from "react-router";
+import "./UserList.css";
 
 interface UserCardProps {
     user: IUser;
