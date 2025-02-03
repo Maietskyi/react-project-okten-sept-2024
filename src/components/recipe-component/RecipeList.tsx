@@ -17,6 +17,7 @@ export const RecipeList = ({ recipe }: RecipeListProps) => {
         <div className="recipe">
             <Link to={`/recipes/${recipe.id}`} className="recipe-title">
                 {recipe.name}
+            </Link>
             <div className="recipe-tags">
                 {recipe.tags?.map((tag, index) => (
                     <span key={index} className="tag" onClick={() => handleTagClick(tag)}>
@@ -24,7 +25,6 @@ export const RecipeList = ({ recipe }: RecipeListProps) => {
                     </span>
                 ))}
             </div>
-            </Link>
         </div>
     );
 };
