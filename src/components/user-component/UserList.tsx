@@ -7,7 +7,7 @@ interface UserCardProps {
     user: IUser;
 }
 
-export const UserCard: FC<UserCardProps> = ({user}) => {
+export const UserList: FC<UserCardProps> = ({user}) => {
     return (
         <div className="user-card">
             <Link className="user-card-flex" to={`/users/${user.id}`}>
