@@ -4,7 +4,7 @@ import {useEffect} from "react";
 import {AppDispatch, RootState} from "../../redux/store.ts";
 import {fetchUsers, setPage} from "../../redux/slices/userSlice.ts";
 import {SearchComponent} from "../search-component/SearchComponent.tsx";
-import {UserCard} from "../user-component/UserCard.tsx";
+import {UserList} from "../user-component/UserList.tsx";
 import {PaginationComponent} from "../pagination-component/PaginationComponent.tsx";
 
 
@@ -61,7 +61,7 @@ export const UsersComponent = () => {
                 ) : users.length > 0 ? (
                     users.map((user) => (
                         <li key={user.id}>
-                            <UserCard user={user}/>
+                            <UserList user={user}/>
                         </li>
                     ))
                 ) : (
