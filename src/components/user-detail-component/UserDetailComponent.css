@@ -1,3 +1,10 @@
+.details-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
 .details_result {
     width: 50%;
     margin: 10px auto;
@@ -20,4 +27,9 @@
 
 .details-result-tags:hover {
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+.button-go-back{
+    background-color: #456845;
+    margin-top: 20px;
 }

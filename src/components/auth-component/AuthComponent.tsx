@@ -25,7 +25,7 @@ export const AuthComponent = () => {
                 navigate('/');
             }
         } catch (err) {
-            console.error("Authorization error:", err);
+            console.error("Error authorization:", err);
         }
     };
 
