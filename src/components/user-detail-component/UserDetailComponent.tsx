@@ -54,7 +54,7 @@ export const UserDetailComponent = () => {
                     <p>No recipes found.</p>
                 )}
             </div>
-            <button onClick={() => navigate(-1)} className="button-go-back">Go back to recipes</button>
+            <button onClick={() => navigate("/users")} className="button-go-back">Go back to users</button>
         </div>
     );
 };

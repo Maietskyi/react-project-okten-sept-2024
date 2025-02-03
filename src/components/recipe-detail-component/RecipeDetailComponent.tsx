@@ -50,7 +50,7 @@ export const RecipeDetailComponent = () => {
                                                              to={`/users/${selectedRecipe.userId}`}>View
                     profile</Link></strong></p>
             </div>
-            <button onClick={() => navigate(-1)} className="button-go-back">Go back to recipes</button>
+            <button onClick={() => navigate("/recipes")} className="button-go-back">Go back to recipes</button>
         </div>
     )
         ;
