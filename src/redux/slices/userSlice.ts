@@ -1,7 +1,6 @@
 import {createSlice, createAsyncThunk} from "@reduxjs/toolkit";
-import axios from "axios";
-import {IUser} from "../../models/user/IUser.ts";
-import {getUserByIdApi, getUsersApi} from "../../services/api.service.ts";
+import {IUser} from "../../models/IUser.ts";
+import {fetchUserData, getUserByIdApi, getUsersApi} from "../../services/api.service.ts";
 
 interface UserState {
     firstName: string;
@@ -12,6 +11,7 @@ interface UserState {
     total: number;
     currentPage: number;
     user: IUser | null;
+    selectedUser: IUser | null;
 }
 
 const initialState: UserState = {
@@ -23,26 +23,22 @@ const initialState: UserState = {
     total: 0,
     currentPage: 1,
     user: null,
+    selectedUser: null,
 };
-
-const axiosInstance = axios.create({
-    baseURL: "https://dummyjson.com/auth",
-    headers: {}
-});
 
 export const fetchUsers = createAsyncThunk<
     { users: IUser[]; total: number },
-    { page: number },
+    { query: string, page: number },
     { rejectValue: string }
 >(
     "user/fetchUsers",
-    async ({ page }, { rejectWithValue }) => {
+    async ({page, query}, {rejectWithValue}) => {
         try {
-            const data = await getUsersApi(page);
-            return { users: data.users, total: data.total };
+            const data = await getUsersApi(page, query);
+            return {users: data.users, total: data.total};
         } catch (error) {
             console.log(error);
-            return rejectWithValue("Не вдалося отримати список користувачів");
+            return rejectWithValue("Failed to get user list");
         }
     }
 );
@@ -50,18 +46,18 @@ export const fetchUsers = createAsyncThunk<
 export const fetchUser = createAsyncThunk<IUser, void, { rejectValue: string }>(
     "user/fetchUser",
     async (_, {getState, rejectWithValue}) => {
+        const state = getState() as { auth: { accessToken: string | null } };
+        const accessToken = state.auth.accessToken;
+
+        if (!accessToken) {
+            return rejectWithValue("User is not authorized.");
+        }
+
         try {
-            const state = getState() as { auth: { accessToken: string | null } };
-            if (!state.auth.accessToken) {
-                return rejectWithValue("Користувач не авторизований");
-            }
-            const response = await axiosInstance.get("/me", {
-                headers: {Authorization: `Bearer ${state.auth.accessToken}`},
-            });
-            return response.data;
+            return await fetchUserData(accessToken);
         } catch (error) {
-            console.log(error);
-            return rejectWithValue("Не вдалося отримати дані користувача");
+            console.error("Error in fetchUser:", error);
+            return rejectWithValue("Failed to retrieve user data");
         }
     }
 );
@@ -76,7 +72,10 @@ const userSlice = createSlice({
     reducers: {
         setPage: (state, action) => {
             state.currentPage = action.payload;
-        }
+        },
+        setSelectedUser: (state, action) => {
+            state.selectedUser = action.payload;
+        },
     },
     extraReducers: (builder) => {
         builder
@@ -111,8 +110,12 @@ const userSlice = createSlice({
                 state.error = null;
             })
             .addCase(fetchUserById.fulfilled, (state, action) => {
-                state.user = action.payload;
+                state.selectedUser = action.payload;
                 state.loading = false;
+
+                if (!state.users.find(user => user.id === action.payload.id)) {
+                    state.users.push(action.payload);
+                }
             })
             .addCase(fetchUserById.rejected, (state, action) => {
                 state.loading = false;
@@ -121,5 +124,5 @@ const userSlice = createSlice({
     },
 });
 
-export const {setPage} = userSlice.actions;
+export const {setPage, setSelectedUser} = userSlice.actions;
 export default userSlice.reducer;

@@ -3,7 +3,7 @@ import {UserDetailComponent} from "../components/user-detail-component/UserDetai
 export const UserDetailPage = () => {
     return (
         <div>
-            <UserDetailComponent />
+           <UserDetailComponent/>
         </div>
     );
 };

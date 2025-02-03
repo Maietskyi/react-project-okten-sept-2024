@@ -1,9 +1,8 @@
 import './App.css'
-import {Outlet} from "react-router";
 import {Menu} from "./components/menu-component/Menu.tsx";
+import {Outlet} from "react-router";
 
 function App() {
-
     return (
         <>
             <Menu/>
@@ -12,4 +11,4 @@ function App() {
     )
 }
 
-export default App
+export default App;

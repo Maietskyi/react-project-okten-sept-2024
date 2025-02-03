@@ -1,23 +1,21 @@
 import {FC} from "react";
 import {IUser} from "../../models/IUser.ts";
-import "./UserList.css";
+import "./UserCard.css";
 import {Link} from "react-router";
 
 interface UserCardProps {
     user: IUser;
 }
 
-export const UserList: FC<UserCardProps> = ({user}) => {
+export const UserCard: FC<UserCardProps> = ({user}) => {
     return (
         <div className="user-card">
-            <img src={user.image} alt={user.firstName} width="50"/>
-            <Link to={`/users/${user.id}`}>
+            <Link className="user-card-flex" to={`/users/${user.id}`}>
+                <img src={user.image} alt={user.firstName} width="50"/>
                 <h3>{user.firstName} {user.lastName}</h3>
+                <p>Phone: {user.phone}</p>
+                <p>Email: {user.email}</p>
             </Link>
-            <p>Email: {user.email}</p>
-            <p>Phone: {user.phone}</p>
-            <p>Gender: {user.gender}</p>
-            <p>Date of birth: {user.birthDate}</p>
         </div>
     );
 };

@@ -1,14 +1,14 @@
-import {useDispatch, useSelector} from "react-redux";
-import {AppDispatch, RootState} from "../../redux/store.ts";
-import {useEffect} from "react";
-import {fetchUser} from "../../redux/slices/userSlice.ts";
 import {Link} from "react-router";
-
+import {useDispatch, useSelector} from "react-redux";
+import {useEffect} from "react";
+import './HomeComponent.css';
+import {AppDispatch, RootState} from "../../redux/store.ts";
+import {fetchUser} from "../../redux/slices/userSlice.ts";
 
 export const HomeComponent = () => {
     const dispatch = useDispatch<AppDispatch>();
-    const { isAuthenticated } = useSelector((state: RootState) => state.auth);
-    const { firstName, image, loading, error } = useSelector((state: RootState) => state.user);
+    const {isAuthenticated} = useSelector((state: RootState) => state.auth);
+    const {firstName, image, loading, error} = useSelector((state: RootState) => state.user);
 
     useEffect(() => {
         if (isAuthenticated) {
@@ -21,14 +21,14 @@ export const HomeComponent = () => {
 
     return (
         <div className="home-page">
-            <h1>Welcome to My Website!</h1>
+            <h1>Welcome to the world of cooking!</h1>
             {!isAuthenticated ? (
                 <div className="auth-message">
-                    <p>To access more features, you need to <Link to="/login">log in</Link>.</p>
+                    <p><Link to="/login">login</Link> to view users and recipes.</p>
                 </div>
             ) : (
                 <div className="welcome-message">
-                    {image && <img src={image} alt="User Logo" className="user-logo" />}
+                    {image && <img src={image} alt="User Logo" className="user-logo"/>}
                     <p>Welcome back, dear {firstName ? firstName : " user"}! Enjoy browsing our content.</p>
                 </div>
             )}

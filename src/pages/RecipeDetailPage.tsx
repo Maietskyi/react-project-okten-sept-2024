@@ -3,7 +3,8 @@ import {RecipeDetailComponent} from "../components/recipe-detail-component/Recip
 export const RecipeDetailPage = () => {
     return (
         <div>
-            <RecipeDetailComponent/>
+            <RecipeDetailComponent />
         </div>
     );
 };
+
